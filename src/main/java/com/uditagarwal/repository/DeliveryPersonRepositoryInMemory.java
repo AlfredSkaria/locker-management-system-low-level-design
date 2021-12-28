@@ -2,6 +2,7 @@ package com.uditagarwal.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.uditagarwal.exceptions.DeliveryPersonAlreadyExistsException;
 import com.uditagarwal.model.DeliveryPerson;
@@ -34,4 +35,11 @@ public class DeliveryPersonRepositoryInMemory implements IDeliveryPersonReposito
 		return null;
 	}
 
+	@Override
+	public @NonNull List<DeliveryPerson> getAvailableDeliveryPersons() {
+		return this.allDeliveryPersons.stream()
+				.filter(DeliveryPerson::getIsAssigned)
+				.collect(Collectors.toList());
+	}
+	
 }
