@@ -33,4 +33,8 @@ public class ReturnController {
         final DeliveryPerson deliveryPerson = deliveryPersonService.getDeliveryPerson(slot);
         notificationService.notifyUser(deliveryPerson, otp, slot);
     }
+    
+    public void addDeliveryPerson(@NonNull final DeliveryPerson deliveryPerson) {
+    	deliveryPersonService.addDeliveryPerson(deliveryPerson);
+    }
 }
